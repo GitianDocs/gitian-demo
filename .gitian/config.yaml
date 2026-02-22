@@ -1,0 +1,12 @@
+annotations:
+  render_style: nested
+  detect_docs: true
+  detect_keywords: true
+
+groups:
+  api:
+    color: "#60a5fa"
+    label: API
+  security:
+    color: "#ef4444"
+    label: Security
