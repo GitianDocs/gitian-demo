@@ -2,7 +2,6 @@
 title: Architecture
 description: Component tree and data flow for the todo app
 tags: [architecture, components, data-flow]
-scope: global,security
 ---
 
 # Architecture

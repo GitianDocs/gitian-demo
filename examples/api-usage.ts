@@ -18,13 +18,14 @@ function createTodo(text: string): Todo {
   };
 }
 
-// @gitian#api Batch operations — create multiple todos at once
+// @gitian:note Batch operations — create multiple todos at once
+// --group=api
 function createBatch(texts: string[]): Todo[] {
   return texts.map(createTodo);
 }
 
-/* @gitian#api
- * Filtering utilities — common queries over a todo collection.
+/* @gitian:note Filtering utilities — common queries over a todo collection.
+ * --group=api
  * These pure functions make it easy to compose todo operations.
  */
 function getCompleted(todos: Todo[]): Todo[] {
