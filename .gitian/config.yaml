@@ -10,3 +10,13 @@ groups:
   security:
     color: "#ef4444"
     label: Security
+
+modules:
+  components:
+    label: "Components"
+    color: "#60a5fa"
+    dir: src/components
+  hooks:
+    label: "Hooks"
+    color: "#34d399"
+    dir: src/hooks
