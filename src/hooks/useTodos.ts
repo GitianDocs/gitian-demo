@@ -3,6 +3,18 @@ import type { Todo } from "../types";
 
 const STORAGE_KEY = "gitian-demo-todos";
 
+// @gitian:note --id=AddTodoReq
+// AddTodo request shape — text must be non-empty.
+interface AddTodoRequest {
+  text: string;
+}
+
+// @gitian:note --id=AddTodoResp
+// AddTodo response shape — the created todo item.
+interface AddTodoResponse {
+  todo: { id: string; text: string; completed: boolean; createdAt: number };
+}
+
 /* @gitian
  * --id=clnsv6
  * --group=api
@@ -22,6 +34,10 @@ export function useTodos() {
     localStorage.setItem(STORAGE_KEY, JSON.stringify(todos));
   }, [todos]);
 
+  // @gitian:api Adds a new todo item to the list and persists it to localStorage.
+  // --title="addTodo"
+  // --request=AddTodoReq
+  // --response=AddTodoResp
   /** @param text - The todo item text to add */
   function addTodo(text: string) {
     setTodos((prev) => [

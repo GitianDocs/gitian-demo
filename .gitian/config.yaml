@@ -2,6 +2,13 @@ annotations:
   render_style: nested
   detect_docs: true
   detect_keywords: true
+  tags:
+    api:
+      kind: api
+      color: "#10b981"
+      label: "API / RPC"
+      urgency: subtle
+      pinned: false
 
 groups:
   api:

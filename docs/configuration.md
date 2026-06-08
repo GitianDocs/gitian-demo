@@ -100,7 +100,7 @@ Define custom annotation tags or override built-in tag behavior. Each tag has th
 
 | Field | Type | Default | Description |
 |-------|------|---------|-------------|
-| `kind` | string | `block` | `marker` (collapsible list), `inline` (card without code), `block` (card with code capture) |
+| `kind` | string | `block` | `marker` (collapsible list), `inline` (card without code), `block` (card with code capture), `api` (ReadMe-style API card with Request/Response payloads) |
 | `color` | string | `#9ca3af` | Hex color for the tag badge and highlights |
 | `label` | string | tag name | Display label shown in the UI |
 | `urgency` | string | `normal` | `low`, `normal`, `high`, `critical` — affects sort order |
@@ -118,6 +118,7 @@ Define custom annotation tags or override built-in tag behavior. Each tag has th
 | `security` | block | `#ef4444` (red) | no |
 | `bug` | block | `#ef4444` (red) | yes |
 | `perf` | block | `#8b5cf6` (purple) | no |
+| `api` | api | `#10b981` (emerald) | no |
 
 ## discovery
 

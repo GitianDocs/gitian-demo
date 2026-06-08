@@ -32,6 +32,33 @@ export async function refreshToken(token: Token) {
 | **marker** | Renders as a collapsible summary list (e.g. todo items) |
 | **inline** | Renders as a card showing the description only — no code capture |
 | **block** | Renders as a card with the description and captured code block |
+| **api** | Renders a ReadMe-style API card: title heading, summary, Request payload, and Response payload |
+
+### The `api` kind
+
+Use `kind: api` (or the built-in `api` tag) to document RPC endpoints, REST routes, webhooks, or any request/response interface. The Request and Response payloads are imported from other annotations by `--id`:
+
+```typescript
+// @gitian:note --id=AddTodoReq
+// AddTodo request shape — text must be non-empty.
+interface AddTodoRequest {
+  text: string;
+}
+
+// @gitian:note --id=AddTodoResp
+// AddTodo response shape — the created todo item.
+interface AddTodoResponse {
+  todo: { id: string; text: string; completed: boolean; createdAt: number };
+}
+
+// @gitian:api Adds a new todo item to the list and persists it to localStorage.
+// --title="addTodo"
+// --request=AddTodoReq
+// --response=AddTodoResp
+function addTodo(text: string) { ... }
+```
+
+The card renders a **Request** panel with the `AddTodoRequest` interface code and a **Response** panel with the `AddTodoResponse` interface code — pulled live from those annotations. Both `--request=` and `--response=` are optional; omit either to render the card without that section.
 
 ## Three-tier detection
 
@@ -57,9 +84,13 @@ Annotation comments support `--key=value` metadata lines:
 
 | Key | Description |
 |-----|-------------|
-| `--id=value` | Unique identifier for the annotation (used in directives) |
+| `--id=value` | Unique identifier for the annotation (used in directives and as payload targets) |
+| `--title="..."` | Override the displayed heading for the card (use quotes for multi-word values) |
 | `--group=name` | Assign annotation to a named group |
-| `--urgency=level` | Override urgency: `low`, `normal`, `high`, `critical` |
+| `--urgency=level` | Override urgency: `subtle`, `normal`, `loud`, `critical` |
+| `--module=name` | Explicitly bind annotation to a module |
+| `--request=id` | **api kind only** — id of the annotation whose code becomes the Request payload |
+| `--response=id` | **api kind only** — id of the annotation whose code becomes the Response payload |
 
 Metadata can appear on any line within the annotation comment. Text after whitespace is ignored (acts as an inline comment): `--id=SEC-042 (security audit item)`.
 
